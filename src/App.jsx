@@ -1,11 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Task from "./components/Task";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const task = {
+    id: count,
+    title: `Task 1`,
+    completed: false,
+  };
 
+  const onAchieveTask = (id) => {
+    console.log(id);
+    console.log(`Task ${count} achieved!`);
+  };
+  const onPinTask = () => {
+    console.log(`Task ${count} deleted!`);
+  };
   return (
     <div className="App">
       <div>
@@ -28,8 +41,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <Task task onArchiveTask={onAchieveTask} onPinTask={onPinTask} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
